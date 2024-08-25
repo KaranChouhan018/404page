@@ -2,6 +2,7 @@
 import { Canvas } from '@react-three/fiber'
 import Model from './Model'
 import { Environment } from '@react-three/drei'
+import { Bloom, DepthOfField, EffectComposer, Noise, Vignette } from '@react-three/postprocessing';
 
 export default function Scene() {
     return (
@@ -9,6 +10,13 @@ export default function Scene() {
              <Model />
             <directionalLight intensity={3} position={[0, 0.1, 1]} />
             <Environment preset="city"/>
+            <EffectComposer>
+            <DepthOfField  />
+            <Bloom/>
+
+            <Noise opacity={0.2} />
+           <Vignette eskil={false}  darkness={1} />
+      </EffectComposer>
         </Canvas>
     )
 }

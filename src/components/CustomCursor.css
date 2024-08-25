@@ -1,0 +1,21 @@
+/* CustomCursor.css */
+.custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ff7e5f, #feb47b);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease;
+    z-index: 9999;
+}
+
+.custom-cursor.hover {
+    width: 40px;
+    height: 40px;
+}
+
+.hoverable {
+    cursor: none; /* Hide the default cursor */
+}

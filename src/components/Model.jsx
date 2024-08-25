@@ -4,17 +4,24 @@ import { useThree, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
 export default function Model() {
-    const { viewport } = useThree()
+    const { viewport, camera } = useThree()
     const groupRef = useRef()
-    
+
+    // Adjust camera position for mobile view
     useFrame(() => {
-      
+        if (viewport.width < 400) {
+            camera.position.set(0, 0, 500)
+        } else {
+            camera.position.set(0, 0, 5)
+        }
     })
 
     const { nodes } = useGLTF('/medias/segment3.glb')
     
     return (
-        <group ref={groupRef} scale={viewport.width < 600 ? viewport.width / 40 : viewport.width / 1}>
+        <group 
+            ref={groupRef} 
+            scale={viewport.width < 400 ? viewport.width / 30 : viewport.width / 40}>
             {nodes.Scene.children.map((mesh, i) => (
                 <Mesh data={mesh} key={i}/>
             ))}
@@ -28,15 +35,16 @@ function Font() {
     const textOption = {
         color: "white",
         anchorX: "center",
-        anchorY: "middle"
+        anchorY: "middle",
+        fontFamily : 'SUD',
     }
     return (
         <group>
-            <Text font={src} position={[0, 0, -.1]} fontSize={10} {...textOption}>
+            <Text font={src} position={[0, 0, -.1]} fontSize={9} {...textOption}>
                 404 
             </Text>
-            <Text font={src} position={[0, -6, 0]} fontSize={1.2} {...textOption}>
-                The link is dead!!!
+            <Text  position={[0, -5, 0]} fontSize={ 0.5} {...textOption}>
+                The link is broken!
             </Text>
         </group>
     )
