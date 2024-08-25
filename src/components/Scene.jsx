@@ -15,7 +15,7 @@ export default function Scene() {
             <Bloom/>
 
             <Noise opacity={0.2} />
-           <Vignette eskil={false}  darkness={1} />
+           <Vignette eskil={false}  darkness={1.5} />
       </EffectComposer>
         </Canvas>
     )
