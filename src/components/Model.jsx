@@ -47,7 +47,7 @@ function Mesh({ data }) {
         thickness: 0.99,
         ior: 1.8,
         chromaticAberration: 0.8,
-        resolution: 3000,
+        resolution: 300,
     }
 
     return (
